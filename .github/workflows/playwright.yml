@@ -20,9 +20,9 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        working-directory: adverlink  # Make sure we're in the right directory
+        working-directory: adverlink  # Ensure npm installs dependencies in the correct directory
         run: npm install
 
       - name: Run Playwright script
-        working-directory: adverlink  # Ensure we're in the correct directory
+        working-directory: adverlink  # Ensure the Playwright script is run from the correct directory
         run: node playwright/test.js
