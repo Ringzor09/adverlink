@@ -14,18 +14,17 @@ jobs:
           repository: 'Ringzor09/adverlink'
           path: 'adverlink'
 
-      - name: List directory contents
-        run: ls -R adverlink
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
       - name: Install dependencies
-        working-directory: adverlink  # Ensure we're in the correct directory
-        run: npm install
+        working-directory: adverlink
+        run: |
+          npm install
+          npx playwright install  # Ensure Playwright dependencies are installed
 
       - name: Run Playwright script
-        working-directory: adverlink  # Ensure we're in the correct directory
+        working-directory: adverlink
         run: node playwright/test.js
