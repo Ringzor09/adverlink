@@ -21,10 +21,18 @@ jobs:
 
       - name: Install dependencies
         working-directory: adverlink
-        run: |
-          npm install
-          npx playwright install  # Ensure Playwright dependencies are installed
+        run: npm install
 
       - name: Run Playwright script
         working-directory: adverlink
         run: node playwright/test.js
+
+      - name: Notify Slack on Success
+        if: success()
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Playwright script ran successfully!"}' ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Notify Slack on Failure
+        if: failure()
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Playwright script failed!"}' ${{ secrets.SLACK_WEBHOOK_URL }}
