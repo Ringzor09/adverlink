@@ -7,7 +7,7 @@
     "test": "node playwright/test.js"
   },
   "dependencies": {
-    "playwright": "^1.45.3"  // Ensure this is the correct version
+    "playwright": "^1.45.3"
   },
   "engines": {
     "node": "20.x"
