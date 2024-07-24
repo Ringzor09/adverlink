@@ -1,7 +1,7 @@
 name: Run Playwright Script
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # Allows manual trigger via GitHub API
 
 jobs:
   run-playwright:
@@ -13,7 +13,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '18'  # Ensure this is compatible with Playwright version
 
       - name: Install dependencies
         run: npm install
