@@ -21,7 +21,9 @@ jobs:
 
       - name: Install dependencies
         working-directory: adverlink
-        run: npm install
+        run: |
+          npm install
+          npx playwright install
 
       - name: Run Playwright script
         working-directory: adverlink
