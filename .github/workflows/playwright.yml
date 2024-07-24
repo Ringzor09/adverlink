@@ -1,22 +1,28 @@
 name: Run Playwright Script
 
 on:
-  workflow_dispatch:  # Allows manual trigger via GitHub API
+  workflow_dispatch:
 
 jobs:
   run-playwright:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          repository: 'Ringzor09/adverlink'
+          path: 'adverlink'
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Ensure this is compatible with Playwright version
+          node-version: '20'
 
       - name: Install dependencies
+        working-directory: adverlink  # Make sure we're in the right directory
         run: npm install
 
       - name: Run Playwright script
+        working-directory: adverlink  # Ensure we're in the correct directory
         run: node playwright/test.js
