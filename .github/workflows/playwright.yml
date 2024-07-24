@@ -13,7 +13,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # Ensure this is compatible with Playwright version
+          node-version: '20'  # Ensure this is compatible with Playwright version
 
       - name: Install dependencies
         run: npm install
